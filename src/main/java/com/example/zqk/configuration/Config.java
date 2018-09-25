@@ -1,6 +1,6 @@
 package com.example.zqk.configuration;
 
-import com.example.zqk.aop.MyAspect01;
+import com.example.zqk.aspect.MyAspect01;
 import com.example.zqk.aop.UserServiceImpl;
 import org.springframework.aop.framework.ProxyFactoryBean;
 import org.springframework.context.annotation.Bean;

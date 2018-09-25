@@ -1,6 +1,7 @@
 package com.example.zqk.com.example.zqk.controller;
 
-import org.springframework.stereotype.Controller;
+import com.example.zqk.aop.UserServiceImpl01;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,8 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("mytest/")
 public class MyController {
 
+    @Autowired
+    UserServiceImpl01 userService;
+
     @RequestMapping("/hello")
     public String hello(){
+        userService.add();
         return "hello world!";
     }
 

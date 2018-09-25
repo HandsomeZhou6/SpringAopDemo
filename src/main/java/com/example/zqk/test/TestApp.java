@@ -60,4 +60,30 @@ public class TestApp {
         userService.del();
     }
 
+    /**
+     * 高级
+     */
+    @Test
+    public void test06() {
+        ApplicationContext ac = new ClassPathXmlApplicationContext("./application.xml");
+        UserServiceImpl01 userService = (UserServiceImpl01) ac.getBean("userServiceImpl");
+//        userService.add();
+//        userService.del();
+//        userService.get();
+        userService.newException();
+    }
+
+    /**
+     * 高级,基于注解
+     */
+    @Test
+    public void test07() {
+        ApplicationContext ac = new ClassPathXmlApplicationContext("./application.xml");
+        UserServiceImpl01 userService = (UserServiceImpl01) ac.getBean("userServiceImpl01");
+        userService.add();
+//        userService.del();
+//        userService.get();
+//        userService.newException();
+    }
+
 }

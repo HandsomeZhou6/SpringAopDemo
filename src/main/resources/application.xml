@@ -2,25 +2,47 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/aop
-        http://www.springframework.org/schema/aop/spring-aop.xsd ">
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="myspect01Id" class="com.example.zqk.aop.MyAspect01"></bean>
-    <bean id="userServiceImplId"
-          class="com.example.zqk.aop.UserServiceImpl01"></bean>
 
+    <!--<bean id="myspect01" class="com.example.zqk.aspect.MyAspect01"></bean>-->
+    <!--<bean id="myspect03" class="com.example.zqk.aspect.MyAspect03"></bean>-->
+    <!--<bean id="userServiceImpl"-->
+          <!--class="com.example.zqk.aop.UserServiceImpl01"></bean>-->
+
+    <!--手写增强类-->
     <!--<bean id="proxyFactoryBeanId" class="org.springframework.aop.framework.ProxyFactoryBean">-->
-    <!--<property name="target" ref="userServiceImplId"></property>-->
-    <!--<property name="interceptorNames" value="myspect01Id"></property>-->
+    <!--<property name="target" ref="userServiceImpl"></property>-->
+    <!--<property name="interceptorNames" value="myspect01"></property>-->
     <!--&lt;!&ndash;强制使用cglib&ndash;&gt;-->
     <!--<property name="optimize" value="true"></property>-->
     <!--</bean>-->
 
-    <aop:config>
-        <aop:pointcut expression="execution(* com.example.zqk.aop.*.*(..))" id="myPointCut"/>
-        <aop:advisor advice-ref="myspect01Id" pointcut-ref="myPointCut"/>
-    </aop:config>
+    <!--aop,中级,实现通知接口-->
+    <!--<aop:config>-->
+    <!--<aop:pointcut expression="execution(* com.example.zqk.aop.*.*(..))" id="myPointCut"/>-->
+    <!--<aop:advisor advice-ref="myspect01" pointcut-ref="myPointCut"/>-->
+    <!--</aop:config>-->
+
+    <!--高级，基于配置-->
+    <!--<aop:config>-->
+    <!--<aop:aspect ref="myspect03">-->
+    <!--<aop:pointcut id="pointCut" expression="execution(* com.example.zqk.aop.*.*(..))"/>-->
+    <!--&lt;!&ndash;<aop:before method="before" pointcut-ref="pointCut"/>&ndash;&gt;-->
+    <!--&lt;!&ndash;<aop:after-returning method="afterReturn" pointcut-ref="pointCut" returning="result" />&ndash;&gt;-->
+    <!--&lt;!&ndash;<aop:after method="after" pointcut-ref="pointCut"/>&ndash;&gt;-->
+    <!--&lt;!&ndash;<aop:around method="around" pointcut-ref="pointCut"/>&ndash;&gt;-->
+    <!--&lt;!&ndash;<aop:after-throwing method="afterThrow" pointcut-ref="pointCut" throwing="e"/>&ndash;&gt;-->
+    <!--</aop:aspect>-->
+    <!--</aop:config>-->
+
+    <context:component-scan base-package="com.example.zqk"/>
+    <aop:aspectj-autoproxy/>
 
 </beans>
