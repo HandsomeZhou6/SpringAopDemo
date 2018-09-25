@@ -1,4 +1,4 @@
-package com.example.zqk.MySpringBootTest.com.example.zqk.controller.aop;
+package com.example.zqk.aop;
 
 /**
  * @author ZHOUQIANKUN009
@@ -6,14 +6,12 @@ package com.example.zqk.MySpringBootTest.com.example.zqk.controller.aop;
  * @说明：
  */
 
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl01 {
 
-    @Override
     public void add() {
         System.out.println("jdk add");
     }
 
-    @Override
     public void del() {
         System.out.println("cglib del");
     }

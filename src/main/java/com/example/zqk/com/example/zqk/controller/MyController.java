@@ -1,4 +1,4 @@
-package com.example.zqk.MySpringBootTest.com.example.zqk.controller;
+package com.example.zqk.com.example.zqk.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

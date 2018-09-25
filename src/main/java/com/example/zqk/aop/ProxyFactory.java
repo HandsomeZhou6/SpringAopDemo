@@ -1,4 +1,4 @@
-package com.example.zqk.MySpringBootTest.com.example.zqk.controller.aop;
+package com.example.zqk.aop;
 
 import org.springframework.cglib.proxy.Enhancer;
 import org.springframework.cglib.proxy.MethodInterceptor;

@@ -1,4 +1,4 @@
-package com.example.zqk.MySpringBootTest.com.example.zqk.controller.aop;
+package com.example.zqk.aop;
 
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
@@ -8,7 +8,6 @@ import org.aopalliance.intercept.MethodInvocation;
  * @date 2018/9/21
  * @说明：增强代码类
  */
-
 
 public class MyAspect01 implements MethodInterceptor {
 

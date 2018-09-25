@@ -1,14 +1,10 @@
-package com.example.zqk.MySpringBootTest.com.example.zqk.controller.aop;
-
-import org.aopalliance.intercept.MethodInterceptor;
-import org.aopalliance.intercept.MethodInvocation;
+package com.example.zqk.aop;
 
 /**
  * @author ZHOUQIANKUN009
  * @date 2018/9/21
  * @说明：增强代码类
  */
-
 
 public class MyAspect {
 
