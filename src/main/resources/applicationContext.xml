@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <!--test03 初级,基于配置，只能一个代理目标类-->
+    <bean id="myspect01" class="com.example.zqk.aspect.MyAspect01"></bean>
+    <bean id="userServiceImpl" class="com.example.zqk.aop.UserServiceImpl"></bean>
+    <bean id="proxyFactoryBeanId" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target" ref="userServiceImpl"></property>
+        <property name="interceptorNames" value="myspect01"></property>
+        <!--强制使用cglib-->
+        <!--<property name="optimize" value="true"></property>-->
+    </bean>
+
+    <!--test04 初级,基于配置，只能一个代理目标类-->
+    <!--<bean id="myspect01" class="com.example.zqk.aspect.MyAspect01"></bean>-->
+    <!--<bean id="userServiceImpl01" class="com.example.zqk.aop.UserServiceImpl01"></bean>-->
+    <!--<bean id="proxyFactoryBeanId" class="org.springframework.aop.framework.ProxyFactoryBean">-->
+    <!--<property name="target" ref="userServiceImpl01"></property>-->
+    <!--<property name="interceptorNames" value="myspect01"></property>-->
+    <!--&lt;!&ndash;强制使用cglib&ndash;&gt;-->
+    <!--<property name="optimize" value="true"></property>-->
+    <!--</bean>-->
+
+    <!--test05 中级,基于配置，可以代理多个目标类-->
+    <!--<bean id="myspect01" class="com.example.zqk.aspect.MyAspect01"></bean>-->
+    <!--<bean id="userServiceImpl01" class="com.example.zqk.aop.UserServiceImpl01"></bean>-->
+    <!--<bean id="userServiceImpl" class="com.example.zqk.aop.UserServiceImpl"></bean>-->
+    <!--<aop:config>-->
+    <!--<aop:pointcut expression="execution(* com.example.zqk.aop.*.*(..))" id="myPointCut"/>-->
+    <!--<aop:advisor advice-ref="myspect01" pointcut-ref="myPointCut"/>-->
+    <!--</aop:config>-->
+
+    <!--test06 高级，基于配置-->
+    <!--<bean id="myspect03" class="com.example.zqk.aspect.MyAspect03"></bean>-->
+    <!--<bean id="userServiceImpl" class="com.example.zqk.aop.UserServiceImpl01"></bean>-->
+    <!--<aop:config>-->
+    <!--<aop:aspect ref="myspect03">-->
+    <!--<aop:pointcut id="pointCut" expression="execution(* com.example.zqk.aop.*.*(..))"/>-->
+        <!--<aop:before method="before" pointcut-ref="pointCut"/>-->
+        <!--<aop:after-returning method="afterReturn" pointcut-ref="pointCut" returning="result"/>-->
+        <!--<aop:after method="after" pointcut-ref="pointCut"/>-->
+        <!--<aop:around method="around" pointcut-ref="pointCut"/>-->
+        <!--<aop:after-throwing method="afterThrow" pointcut-ref="pointCut" throwing="e"/>-->
+    <!--</aop:aspect>-->
+    <!--</aop:config>-->
+
+    <!--test07 高级，基于注解-->
+    <!--<context:component-scan base-package="com.example.zqk"/>-->
+    <!--<aop:aspectj-autoproxy/>-->
+
+</beans>

@@ -1,6 +1,0 @@
-//file application.yml
-my:
-  servers：
-     dev.bar.com
-     foo.bar.com
-     jiaobuchong.com

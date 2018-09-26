@@ -20,14 +20,14 @@ public class ProxyFactory {
     //jdk代理
     final static MyAspect myAspect = new MyAspect();
 
-    public static Object createProxy(final Object userService) {
+    public static Object createProxy(final Object target) {
 
-        Object obj = Proxy.newProxyInstance(userService.getClass().getClassLoader(), userService.getClass().getInterfaces(),
+        Object obj = Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(),
                 new InvocationHandler() {
                     @Override
                     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
                         myAspect.pre();
-                        Object obj1 = method.invoke(userService, args);
+                        Object obj1 = method.invoke(target, args);
                         myAspect.next();
                         return obj1;
                     }

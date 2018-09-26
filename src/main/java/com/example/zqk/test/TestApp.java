@@ -17,6 +17,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class TestApp {
 
+    /**
+     * 手写Jdk代理,实现接口的实现类
+     */
     @Test
     public void test01() {
         UserService userService = new UserServiceImpl();
@@ -24,6 +27,9 @@ public class TestApp {
         proxyUserService.add();
     }
 
+    /**
+     *  手写cglib代理，未实现接口的实现类
+     */
     @Test
     public void test02() {
         UserService proxyUserService = (UserService) ProxyFactory.createUserService();
@@ -31,41 +37,44 @@ public class TestApp {
     }
 
     /**
-     * 初级
-     */
-//    @Test
-//    public void test03() {
-//        ApplicationContext ac=new ClassPathXmlApplicationContext("./application.xml");
-//        UserServiceImpl userService= (UserServiceImpl) ac.getBean("proxyFactoryBeanId");
-//        userService.del();
-//    }
-/**
- * 初级
- */
-//    @Test
-//    public void test04() {
-//        ApplicationContext ac=new ClassPathXmlApplicationContext("./application.xml");
-//        UserService userServiceImpl01= (UserService) ac.getBean("proxyFactoryBeanId");
-//        userServiceImpl01.del();
-//    }
-
-
-    /**
-     * 中级
+     * 初级,基于配置，只能一个代理目标类(jdk代理)
      */
     @Test
-    public void test05() {
-        ApplicationContext ac = new ClassPathXmlApplicationContext("./application.xml");
-        UserServiceImpl01 userService = (UserServiceImpl01) ac.getBean("userServiceImplId");
+    public void test03() {
+        ApplicationContext ac = new ClassPathXmlApplicationContext("./applicationContext.xml");
+        UserService userService = (UserService) ac.getBean("proxyFactoryBeanId");
         userService.del();
     }
 
     /**
-     * 高级
+     * 初级,基于配置，只能一个代理目标类（cglib代理）
+     */
+    @Test
+    public void test04() {
+        ApplicationContext ac = new ClassPathXmlApplicationContext("./applicationContext.xml");
+        UserServiceImpl01 userServiceImpl01 = (UserServiceImpl01) ac.getBean("proxyFactoryBeanId");
+        userServiceImpl01.del();
+    }
+
+
+    /**
+     * 中级,基于配置,
+     */
+    @Test
+    public void test05() {
+        ApplicationContext ac = new ClassPathXmlApplicationContext("./applicationContext.xml");
+        UserServiceImpl01 userServiceImpl01 = (UserServiceImpl01) ac.getBean("userServiceImpl01");
+        UserService userService = (UserService) ac.getBean("userServiceImpl");
+        userServiceImpl01.del();
+        userService.del();
+    }
+
+    /**
+     * 高级,基于配置
      */
     @Test
     public void test06() {
-        ApplicationContext ac = new ClassPathXmlApplicationContext("./application.xml");
+        ApplicationContext ac = new ClassPathXmlApplicationContext("./applicationContext.xml");
         UserServiceImpl01 userService = (UserServiceImpl01) ac.getBean("userServiceImpl");
 //        userService.add();
 //        userService.del();
@@ -78,7 +87,7 @@ public class TestApp {
      */
     @Test
     public void test07() {
-        ApplicationContext ac = new ClassPathXmlApplicationContext("./application.xml");
+        ApplicationContext ac = new ClassPathXmlApplicationContext("./applicationContext.xml");
         UserServiceImpl01 userService = (UserServiceImpl01) ac.getBean("userServiceImpl01");
         userService.add();
 //        userService.del();

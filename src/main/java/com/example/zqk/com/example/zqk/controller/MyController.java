@@ -12,13 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
-@RequestMapping("mytest/")
+@RequestMapping
 public class MyController {
 
     @Autowired
     UserServiceImpl01 userService;
 
-    @RequestMapping("/hello")
+
+    @RequestMapping()
     public String hello(){
         userService.add();
         return "hello world!";
